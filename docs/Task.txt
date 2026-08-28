@@ -1,0 +1,134 @@
+Queremos construir un prototipo de un agente conversacional de voz a voz para realizar pedidos de supermercado.
+El usuario debe poder hablar de forma natural con el agente para añadir, eliminar o modificar productos de su compra. Además, el agente debe tener memoria de pedidos y preferencias anteriores, de forma que pueda aprovechar conversaciones previas para hacer la experiencia más útil.
+El objetivo de esta prueba no es construir un producto completamente terminado, sino evaluar la capacidad del candidato para diseñar, implementar y explicar un sistema de agentes basado en IA.
+Puedes utilizar cualquier tecnología o framework que consideres adecuado. También puedes utilizar herramientas de desarrollo asistido por IA como Cursor, Claude Code, Codex u otras herramientas similares.
+
+⸻
+
+Objetivo
+Construir una aplicación funcional en la que un usuario pueda mantener una conversación por voz con un agente para preparar un pedido de supermercado.
+Ejemplo:
+Usuario:
+“Necesito hacer la compra para esta semana.”
+Agente:
+“Claro. ¿Quieres que use como referencia tu compra anterior?”
+Usuario:
+“Sí, pero esta vez no necesito leche y añade aguacates.”
+Agente:
+“Perfecto. He eliminado la leche y añadido aguacates. ¿Quieres cambiar algo más?”
+El agente debería ser capaz de recordar información relevante de interacciones anteriores.
+Por ejemplo:
+productos comprados anteriormente;
+cantidades habituales;
+marcas o preferencias;
+productos que el usuario compra con frecuencia;
+último pedido realizado;
+preferencias expresadas durante conversaciones anteriores.
+
+⸻
+
+Requisitos funcionales
+1. Interacción por voz
+El usuario debe poder hablar con el agente utilizando un micrófono.
+El sistema debe implementar un flujo de:
+voz → agente → voz
+Idealmente, la conversación debería sentirse relativamente fluida y natural.
+El candidato puede decidir cómo implementar la arquitectura de voz, por ejemplo:
+Speech-to-Text + LLM + Text-to-Speech;
+modelos de audio en tiempo real;
+WebRTC;
+WebSockets;
+APIs de voz;
+cualquier otra arquitectura que considere adecuada.
+No se requiere una tecnología concreta.
+
+⸻
+
+2. Gestión de la cesta
+Durante la conversación, el agente debe poder gestionar una cesta de supermercado.
+Como mínimo debe soportar:
+añadir productos;
+eliminar productos;
+cambiar cantidades;
+consultar el contenido de la cesta;
+confirmar el pedido.
+Ejemplos:
+“Añade dos litros de leche.”
+“Quita los tomates.”
+“En vez de dos yogures quiero seis.”
+“¿Qué llevo en la cesta?”
+
+⸻
+
+3. Memoria
+El agente debe mantener memoria entre conversaciones.
+Si el usuario vuelve posteriormente, el sistema debería poder utilizar información de pedidos anteriores.
+Ejemplos:
+“Hazme la misma compra que la semana pasada.”
+“Añade el café que suelo comprar.”
+“La próxima vez recuerda que prefiero leche de avena.”
+La implementación de la memoria queda a criterio del candidato.
+Algunas opciones posibles incluyen:
+base de datos relacional;
+base de datos documental;
+vector database;
+memoria estructurada;
+combinación de diferentes estrategias.
+Nos interesa especialmente entender qué información decide guardar el candidato y por qué.
+
+⸻
+
+4. Historial de pedidos
+El sistema debe almacenar los pedidos realizados.
+Como mínimo debería ser posible recuperar:
+fecha del pedido;
+productos;
+cantidades.
+Ejemplo de estructura conceptual:
+{
+ "order_id": "123",
+ "date": "2026-08-20",
+ "items": [
+   {
+     "product": "leche de avena",
+     "quantity": 2
+   },
+   {
+     "product": "plátanos",
+     "quantity": 6
+   }
+ ]
+}
+No es necesario utilizar exactamente este formato.
+
+⸻
+
+5. Uso de memoria durante la conversación
+La memoria no debe ser únicamente un historial pasivo.
+El agente debe ser capaz de utilizarla activamente.
+Por ejemplo:
+Usuario:
+“Necesito café.”
+Agente:
+“La última vez compraste café Lavazza. ¿Quieres el mismo?”
+O:
+Usuario:
+“Hazme la compra habitual.”
+El agente podría reconstruir una cesta basándose en pedidos anteriores.
+
+⸻
+
+6. Interfaz
+La interfaz puede ser sencilla.
+Como mínimo debería permitir:
+iniciar una conversación;
+hablar con el agente;
+escuchar las respuestas;
+ver el contenido actual de la cesta.
+Opcionalmente puede mostrar:
+transcripción de la conversación;
+historial de pedidos;
+memoria almacenada;
+estado del agente.
+No evaluamos principalmente el diseño visual.
+Una interfaz sencilla pero funcional es suficiente.
